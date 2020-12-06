@@ -12,7 +12,7 @@ In brief:
 
 * don't use GuiceJobsBundle
 
-* create an "installer" class which registers your Job classes with guicey. See [GuiceyInstaller](GuiceyInstaller.java).
+* create an "installer" class which registers your Job classes with guicey. See [GuiceyInstaller](src/main/java/com/github/grommitz/dwguicey/GuiceyInstaller.java).
 
 * create the GuiceJobManager in the main run() method.
 
