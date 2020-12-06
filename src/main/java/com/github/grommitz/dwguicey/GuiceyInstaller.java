@@ -2,6 +2,9 @@ package com.github.grommitz.dwguicey;
 
 import io.dropwizard.jobs.Job;
 import io.dropwizard.jobs.annotations.Every;
+import io.dropwizard.jobs.annotations.On;
+import io.dropwizard.jobs.annotations.OnApplicationStart;
+import io.dropwizard.jobs.annotations.OnApplicationStop;
 import io.dropwizard.setup.Environment;
 import ru.vyarus.dropwizard.guice.debug.util.RenderUtils;
 import ru.vyarus.dropwizard.guice.module.installer.FeatureInstaller;
@@ -15,7 +18,10 @@ public class GuiceyInstaller implements FeatureInstaller, InstanceInstaller<Job>
 
 	@Override
 	public boolean matches(Class<?> type) {
-		return FeatureUtils.hasAnnotation(type, Every.class);
+		return FeatureUtils.hasAnnotation(type, Every.class)
+				|| FeatureUtils.hasAnnotation(type, On.class)
+				|| FeatureUtils.hasAnnotation(type, OnApplicationStart.class)
+				|| FeatureUtils.hasAnnotation(type, OnApplicationStop.class);
 	}
 
 	@Override
